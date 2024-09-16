@@ -112,6 +112,23 @@ class PurchaseTransactionsController extends AppController
             $transactionDate = $purchaseTransaction->transaction_date;
             $purchaseTransaction->code = $this->Code->generateCodePCTS($transactionDate);
 
+            $session = $this->getRequest()->getSession();
+            // Memeriksa keberadaan data authentikasi ID Employee di session
+            if ($session->check('Auth.id')) {
+                // Data Session tersedia
+                $employeeId = $session->read('Auth.id');
+                $purchaseTransaction->created_by = $employeeId;
+                $purchaseTransaction->modified_by = $employeeId;
+            } else {
+                // Data Session tidak tersedia
+                $this->Flash->error(__('Your session has expired. Please log in again.'));
+                return $this->redirect([
+                    'controller' => 'Employees',
+                    'action' => 'login',
+                    'login'
+                ]);
+            }
+
             if ($this->PurchaseTransactions->save($purchaseTransaction)) {
                 $this->Flash->success(__('The purchase transaction has been saved.'));
 

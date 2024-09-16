@@ -35,7 +35,6 @@ class PurchaseTransaction extends Entity
      * @var array<string, bool>
      */
     protected $_accessible = [
-        'employee_id' => true,
         'purchase_id' => true,
         'price' => true,
         'quantity' => true,

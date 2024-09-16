@@ -44,7 +44,6 @@ class Employee extends Entity
         'phone' => true,
         'email' => true,
         'address' => true,
-        'password' => true,
         'last_login' => true,
         'created' => true,
         'modified' => true,

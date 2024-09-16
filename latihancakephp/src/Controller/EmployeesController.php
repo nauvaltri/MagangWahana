@@ -116,7 +116,8 @@ class EmployeesController extends AppController
     {
         parent::beforeFilter($event);
         // Mengizinkan aksi login untuk pengguna yang belum terautentikasi
-        $this->Authentication->addUnauthenticatedActions(['login']);
+        $this->Authentication->addUnauthenticatedActions([
+        'login']);
     }
 
     public function login()

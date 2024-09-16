@@ -75,9 +75,7 @@ class PurchaseTransactionsTable extends Table
      */
     public function validationDefault(Validator $validator): Validator
     {
-        $validator
-            ->integer('employee_id')
-            ->notEmptyString('employee_id');
+       
 
         $validator
             ->integer('purchase_id')

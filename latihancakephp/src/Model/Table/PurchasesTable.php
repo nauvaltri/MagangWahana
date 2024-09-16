@@ -51,6 +51,9 @@ class PurchasesTable extends Table
             'foreignKey' => 'supplier_id',
             'joinType' => 'INNER',
         ]);
+        $this->hasMany('PurchaseTransactions', [
+            'foreignKey' => 'purchase_id',
+        ]);
     }
 
     /**
